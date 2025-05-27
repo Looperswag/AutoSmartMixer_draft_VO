@@ -27,7 +27,7 @@ paths:
 # --------------------------
 # ... (保持不变) ...
 models:
-  whisper_model_name: "large-v3"
+  whisper_model_name: "base"
   embedding_model_name: "LaBSE"
 
 # --------------------------
