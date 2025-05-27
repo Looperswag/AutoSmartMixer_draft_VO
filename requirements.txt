@@ -1,0 +1,26 @@
+# Core AI and ML Libraries
+openai-whisper>=20231117
+sentence-transformers>=2.2.2
+torch>=2.0.0 # Whisper and SentenceTransformers depend on PyTorch
+torchaudio>=2.0.0 # Often needed with torch for audio operations
+torchvision>=0.15.0 # Often needed with torch
+
+# Media Processing
+moviepy>=1.0.3
+# Pillow is a dependency of moviepy and sometimes needs to be explicit
+Pillow>=9.0.0
+
+# Configuration and Utilities
+PyYAML>=6.0 # For reading config.yaml
+tqdm>=4.60.0 # For progress bars, optional but good for UX
+
+# Note:
+# 1. Versions are examples; you might need to adjust them based on compatibility
+#    or specific features you require.
+# 2. If you plan to use a specific version of CUDA with PyTorch,
+#    you might install PyTorch using the specific command from pytorch.org, e.g.:
+#    pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+#    Ensure this matches the CUDA version whisper and sentence-transformers expect or can use.
+# 3. Some of these packages have many dependencies of their own.
+#    It's good practice to generate this file from a clean virtual environment:
+#    pip freeze > requirements.txt

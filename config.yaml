@@ -1,0 +1,85 @@
+# AISmartMixer Configuration File - Modified for user-specific workspaces
+
+# --------------------------
+# PATHS CONFIGURATION
+# --------------------------
+# 定义所有输入和输出文件/文件夹的路径
+# 注意：这些路径现在是相对于 user/<username>/data/ 或 user/<username>/output/ 的
+paths:
+  # 输入目录 (相对于 user/<username>/data/)
+  input_audio_dir: "input_audio/"
+  input_audio_filename: "你的vo音频文件.mp3" # 您主要的旁白/音频文件 (在此目录下)
+  input_video_dir: "input_video_clips/"
+
+  # 输出目录 (相对于 user/<username>/output/)
+  output_processed_data_dir: "processed_data/"
+  output_edl_dir: "edl/"
+  output_final_video_dir: "final_video/" # 仍然可以保留，但实际内容可能在更深的clips里
+  output_clips_dir: "exported_clips/"
+
+  # 输出文件名 (在上述输出目录中)
+  audio_transcription_json: "audio_transcription.json"
+  video_metadata_embeddings_json: "video_metadata_embeddings.json"
+  edit_decision_list_json: "final_edit_list.json"
+
+# --------------------------
+# MODEL CONFIGURATION
+# --------------------------
+# ... (保持不变) ...
+models:
+  whisper_model_name: "large-v3"
+  embedding_model_name: "LaBSE"
+
+# --------------------------
+# ANALYSIS SETTINGS
+# --------------------------
+# ... (保持不变) ...
+analysis:
+  recursive_video_search: true
+
+# --------------------------
+# PROCESSING & MATCHING SETTINGS
+# --------------------------
+# ... (保持不变, 确保上一轮的修改仍然适用) ...
+settings:
+  video_extensions:
+    - "*.mp4"
+    - "*.mov"
+    - "*.avi"
+    - "*.mkv"
+    - "*.webm"
+    - "*.flv"
+  min_clip_duration_for_timeline: 1.0
+  similarity_threshold: -1.0
+  top_k_candidates: 5
+  video_reuse_strategy: "reuse_different_segments"
+  fallback_strategy: "blank"
+
+# --------------------------
+# CLIP EXPORT SETTINGS
+# --------------------------
+# ... (新增文件名长度限制) ...
+clip_export:
+  max_clips_per_segment: 5
+  include_score_in_filename: true
+  max_folder_name_length: 150
+  max_filename_length: 100  # 新增：限制输出文件名长度，避免"文件名过长"错误
+  max_original_filename_component_len: 80  # 新增：限制原始文件名在新文件名中的最大长度
+  extract_subclips: true
+  padding_seconds: 2.0
+  create_preview_metadata: true
+  normalize_audio: false
+
+# --------------------------
+# LOGGING CONFIGURATION
+# --------------------------
+logging:
+  level: "INFO"
+  log_file: "app.log" # 日志文件名，会放在 user/<username>/output/ 下
+  # log_to_console: True # (可以从 logger_setup.py 的默认值控制)
+  # log_to_file: True   # (可以从 logger_setup.py 的默认值控制)
+
+# --------------------------
+# MISCELLANEOUS
+# --------------------------
+force_reanalyze: true
