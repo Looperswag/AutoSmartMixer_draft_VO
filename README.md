@@ -177,8 +177,8 @@ AISmartMixer 的处理流程主要分为以下几个阶段：
                 "another_clip.mov": "D:/stock_footage/nature/waterfall.mov"
             ```
 
-5.  **Google API 密钥 (idc-ipc-1dc332fa2fe3.json)**:
-    *   您提供的 `idc-ipc-1dc332fa2fe3.json` 文件是一个 Google Cloud 服务账号密钥。
+5.  **Google API 密钥 (your_key.json)**:
+    *   您提供的 `your_key.json` 文件是一个 Google Cloud 服务账号密钥。
     *   **当前 AISmartMixer 代码库 (Whisper + Sentence Transformers) 本身不直接使用 Google Cloud 服务 (如 Gemini)。因此，此密钥文件对于运行此特定代码库不是必需的。**
     *   如果您计划将此代码库与其他使用 Google Cloud 服务的模块集成，则可能需要它。
 
